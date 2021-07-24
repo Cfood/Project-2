@@ -34,7 +34,10 @@
 
     <script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
 
-    
+
+    <script type = "text/javascript" src = "https://d3js.org/d3.v4.min.js"></script>
+
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/js/select2.min.js"></script>
     <script type="text/javascript">  
@@ -133,32 +136,59 @@
 <body>
 
   <div class="create-form">
-    <form action="/examples/actions/confirmation.php" method="post">
+    <form method="post" action="connect.php">
         <p class="hint-text">Create Study Group</p>
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="School" required="required">
+			<select type="text" id="university" class="form-control" name="school" style="width:640px;" required="required">
+			</select>
+		</div>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Subject" name='subject' required="required" id='subject'>
         </div>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder= "Level" name='level' >
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder= "When?" name='when' required="required">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder= "Where?" name = 'where' required="required">
+          </div>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder= "Group or Partner?" name = 'groupType' required="required">
+        </div>
+        <input type="submit" class="btn btn-primary btn-block" value="Submit">
+    </form>
+    <!-- <form  method="post">
+        <p class="hint-text">Create Study Group</p>
         <div class="form-group">
 			<select type="text" id="university" class="form-control" style="width:640px;">
 			</select>
 		</div>
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Subject" required="required">
+            <input type="text" class="form-control" placeholder="Subject" name='subject' required="required" id='subject'>
         </div>
         <div class="form-group">
-          <input type="text" class="form-control" placeholder= "Level" >
+          <input type="text" class="form-control" placeholder= "Level" name='level' >
         </div>
         <div class="form-group">
-          <input type="text" class="form-control" placeholder= "When?" required="required">
+          <input type="text" class="form-control" placeholder= "When?" name='when' required="required">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" placeholder= "Where?" required="required">
+            <input type="text" class="form-control" placeholder= "Where?" name = 'where' required="required">
           </div>
         <div class="form-group">
-          <input type="text" class="form-control" placeholder= "Group or Partner?" required="required">
+          <input type="text" class="form-control" placeholder= "Group or Partner?" name = 'groupType' required="required">
         </div>
-        <input type="submit" class="btn btn-primary btn-block" value="Create">
-    </form>
+        <input type="submit" class="btn btn-primary btn-block" value="Create" onclick="saveForm()">
+        <script> 
+        function saveForm() {
+        var inp = document.getElementById('subject').value 
+        
+        }
+        
+        </script>
+    </form> -->
     <div class="text-center">Questions? <a href="FAQ.html">FAQ</a></div>
 </div>
 
