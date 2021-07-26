@@ -1,11 +1,15 @@
 from flask import Flask, redirect, url_for, request
 import sqlite3
+
+# Create an instance of Flask
 app = Flask(__name__)
 
+# Route to render name
 @app.route('/success/<name>')
 def success(name):
     return ' %s' % name
 
+# route to store login information
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     if request.method == 'POST':
@@ -14,7 +18,23 @@ def login():
         email = request.form['email']
         password = request.form['password']
         # call the method to store the data in database(sqlite)
-        store_login(first_name, last_name, email,password)
+        store_login(first_name, last_name, email, password)
+        
+        return redirect(url_for('success', name=first_name))
+    else:
+        user = request.args.get('first_name')
+        return redirect(url_for('success', name=user))
+
+#################  create study group ##############
+@app.route('/study_group', methods=['POST', 'GET'])
+def create_():
+    if request.method == 'POST':
+        first_name = request.form['first_name']
+        last_name = request.form['last_name']
+        email = request.form['email']
+        password = request.form['password']
+        # call the method to store the data in database(sqlite)
+        store_login(first_name, last_name, email, password)
         
         return redirect(url_for('success', name=first_name))
     else:
