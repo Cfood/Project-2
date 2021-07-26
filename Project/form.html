@@ -48,13 +48,75 @@
             });
         });
     </script>
-        <script type="text/javascript">  
-            $(document).ready(function() {
-                var stateArray = ['aalabamd', 'texas', 'minnesota'];
-                $("#state").select2({
-                data: stateArray
-                });
+    <script type="text/javascript">  
+        $(document).ready(function() {
+            var levelArray = [100, 200,300,400,500,600,700,800];
+            $("#courseLevel").select2({
+            data: levelArray
             });
+        });
+    </script>
+    <script type="text/javascript">  
+        $(document).ready(function() {
+            var stateArray = ["Alaska",
+                  "Alabama",
+                  "Arkansas",
+                  "American Samoa",
+                  "Arizona",
+                  "California",
+                  "Colorado",
+                  "Connecticut",
+                  "District of Columbia",
+                  "Delaware",
+                  "Florida",
+                  "Georgia",
+                  "Guam",
+                  "Hawaii",
+                  "Iowa",
+                  "Idaho",
+                  "Illinois",
+                  "Indiana",
+                  "Kansas",
+                  "Kentucky",
+                  "Louisiana",
+                  "Massachusetts",
+                  "Maryland",
+                  "Maine",
+                  "Michigan",
+                  "Minnesota",
+                  "Missouri",
+                  "Mississippi",
+                  "Montana",
+                  "North Carolina",
+                  " North Dakota",
+                  "Nebraska",
+                  "New Hampshire",
+                  "New Jersey",
+                  "New Mexico",
+                  "Nevada",
+                  "New York",
+                  "Ohio",
+                  "Oklahoma",
+                  "Oregon",
+                  "Pennsylvania",
+                  "Puerto Rico",
+                  "Rhode Island",
+                  "South Carolina",
+                  "South Dakota",
+                  "Tennessee",
+                  "Texas",
+                  "Utah",
+                  "Virginia",
+                  "Virgin Islands",
+                  "Vermont",
+                  "Washington",
+                  "Wisconsin",
+                  "West Virginia",
+                  "Wyoming"]
+            $("#state").select2({
+            data: stateArray
+            });
+        });
         </script>
 
 
@@ -146,28 +208,37 @@
   <div class="create-form">
     <form method="post" action="connect.php">
         <p class="hint-text">Create Study Group</p>
-        <div class="form-group">
+        <div class="form-group" id='dropdown-menu'>
+            <label for="university" id='selectionLabel'>School </label>
 			<select type="text" id="university" class="form-control" name="school" style="width:640px;" required="required">
 			</select>
 		</div>
-        <div class="form-group">
+        <div class="form-group" id='dropdown-menu'>
+            <label for="state" id='selectionLabel'>State </label>
 			<select type="text" id="state" class="form-control" name="state" style="width:640px;" required="required">
 			</select>
 		</div>
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Subject" name='subject' required="required" id='subject'>
-        </div>
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder= "Level" name='level' >
-        </div>
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder= "When?" name='when' required="required">
-        </div>
-        <div class="form-group">
+        <div class="form-group" id='dropdown-menu'>
+            <label for="subject" id='selectionLabel'>Subject </label>
+			<select type="text" id="subject" class="form-control" name="subject" style="width:640px;" required="required">
+			</select>
+		</div>
+        <div class="form-group" id='dropdown-menu'>
+            <label for="courseLevel" id='selectionLabel'>Course Level </label>
+			<select type="text" id="courseLevel" class="form-control" placeholder="Subject" name="level" style="width:640px;" required="required">
+			</select>
+		</div>
+        <div class='form-group' id = 'date-selection'>
+            <label for="when">When? </label>
+            <input type="date" id="when" name="when"></div>
+        <div class="form-group" >
             <input type="text" class="form-control" placeholder= "Where?" name = 'where' required="required">
           </div>
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder= "Group or Partner?" name = 'groupType' required="required">
+        <div class="radioButton">
+            <input type="radio" name="groupType" value="Group"> Group
+            <input type="radio" name="groupType" value="Partner"> Partner
+
+          <!-- <input type="text" class="form-control" placeholder= "Group or Partner?" name = 'groupType' required="required"> -->
         </div>
         <input type="submit" class="btn btn-primary btn-block" value="Submit">
     </form>
@@ -203,6 +274,5 @@
     </form> -->
     <div class="text-center">Questions? <a href="FAQ.html">FAQ</a></div>
 </div>
-
 </body>
 </html>
