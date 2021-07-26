@@ -48,6 +48,14 @@
             });
         });
     </script>
+        <script type="text/javascript">  
+            $(document).ready(function() {
+                var stateArray = ['aalabamd', 'texas', 'minnesota'];
+                $("#state").select2({
+                data: stateArray
+                });
+            });
+        </script>
 
 
 </head>
@@ -143,6 +151,10 @@
 			</select>
 		</div>
         <div class="form-group">
+			<select type="text" id="state" class="form-control" name="state" style="width:640px;" required="required">
+			</select>
+		</div>
+        <div class="form-group">
             <input type="text" class="form-control" placeholder="Subject" name='subject' required="required" id='subject'>
         </div>
         <div class="form-group">
@@ -191,7 +203,6 @@
     </form> -->
     <div class="text-center">Questions? <a href="FAQ.html">FAQ</a></div>
 </div>
-
 
 </body>
 </html>
