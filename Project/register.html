@@ -34,7 +34,7 @@
 </head>
 <!--navbar starting-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a href="index.html" class="navbar-brand">Virtual<b>StudyGroup</b></a>
+    <a href="landing.html" class="navbar-brand">Virtual<b>StudyGroup</b></a>
     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
 		<span class="navbar-toggler-icon"></span>
 	</button>
@@ -70,7 +70,8 @@
             <div class="nav-item dropdown">
                 <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle mr-4">Login</a>
                 <div class="dropdown-menu action-form">
-                    <form action="/examples/actions/confirmation.php" method="post">
+                    <!--form action -->
+                    <form action="http://localhost:5000/" method="post">
                         <p class="hint-text">Sign in with your social media account</p>
                         <div class="form-group social-btn clearfix">
                             <a href="#" class="btn btn-secondary facebook-btn float-left"><i class="fa fa-facebook"></i> Facebook</a>
@@ -93,7 +94,8 @@
             <div class="nav-item dropdown">
                 <a href="register.html" data-toggle="dropdown" class="btn btn-primary dropdown-toggle sign-up-btn">Sign up</a>
                 <div class="dropdown-menu action-form">
-                    <form action="/examples/actions/confirmation.php" method="post">
+                    <!-- Signup form action -->
+                    <form action="http://localhost:5000/signup" method="post">
                         <p class="hint-text">Fill in this form to create your account!</p>
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Username" required="required">
@@ -118,6 +120,7 @@
 <body>
 
     <div class="signup-form">
+        <!--login for action (register)-->
         <form action="http://localhost:5000/login" method="post">
             <h2>Register</h2>
             <p class="hint-text">Create your account. It's free and only takes a minute.</p>
