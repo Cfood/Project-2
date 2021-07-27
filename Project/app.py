@@ -5,9 +5,9 @@ import sqlite3
 app = Flask(__name__)
 
 # Route to render name
-@app.route('/success/<name>')
-def success(name):
-    return ' %s' % name
+@app.route('/success')
+def success():
+    return 'Hello'
 
 # route to store login information
 @app.route('/login', methods=['POST', 'GET'])
@@ -18,7 +18,7 @@ def login():
         email = request.form['email']
         password = request.form['password']
         # call the method to store the data in database(sqlite)
-        store_login(first_name, last_name, email, password)
+        store_login(first_name, last_name, email, password) 
         
         return redirect(url_for('success', name=first_name))
     else:
@@ -29,6 +29,7 @@ def login():
 # Route for study_group
 @app.route('/study_group', methods=['POST', 'GET'])
 def study_group():
+    print("hi")
     if request.method == 'POST':
         school = request.form['school']
         state = request.form['state']
@@ -42,7 +43,7 @@ def study_group():
         # call the method to store the data in database(sqlite)
         store_study_group(school, state, subject, course_level,time,location,group_type)
         
-        return redirect(url_for('success', name=school))
+        return redirect(url_for('success'))
     else:
         user = request.args.get('school')
         return redirect(url_for('success', name=user))
@@ -51,7 +52,7 @@ def study_group():
 
 # function for database connection 
 def store_login(first_name, last_name, email,password):
-    #print(first_name)
+    print(last_name)
     connection = sqlite3.connect("C:/Users/vijay/Documents/Saradha_R/Project-2/Project/app.db")
     connection.row_factory = sqlite3.Row
     cursor = connection.cursor()
@@ -64,6 +65,7 @@ def store_login(first_name, last_name, email,password):
   
 
     connection.commit()
+    connection.close()
     return ""
 
     # return templates.TemplateResponse("index.html", {"request": request, "stocks": rows})
@@ -82,6 +84,7 @@ def store_study_group(school, state, subject, course_level,time,location,group_t
   
 
     connection.commit()
+    connection.close()
     return ""
 
 
