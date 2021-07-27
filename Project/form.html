@@ -160,7 +160,8 @@
             <div class="nav-item dropdown">
                 <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle mr-4">Login</a>
                 <div class="dropdown-menu action-form">
-                    <form action="/examples/actions/confirmation.php" method="post">
+                    <!--login(register) form Action-->
+                    <form action="http://localhost:5000/registe" method="post">
                         <p class="hint-text">Sign in with your social media account</p>
                         <div class="form-group social-btn clearfix">
                             <a href="#" class="btn btn-secondary facebook-btn float-left"><i class="fa fa-facebook"></i> Facebook</a>
@@ -183,7 +184,8 @@
             <div class="nav-item dropdown">
                 <a href="register.html" data-toggle="dropdown" class="btn btn-primary dropdown-toggle sign-up-btn">Sign up</a>
                 <div class="dropdown-menu action-form">
-                    <form action="/examples/actions/confirmation.php" method="post">
+                    <!--register form Action-->
+                    <form action="http://localhost:5000/register" method="post" method="post">
                         <p class="hint-text">Fill in this form to create your account!</p>
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Username" required="required">
@@ -204,9 +206,10 @@
         </div>
     </div>
 </nav>
-
+<!--Study Group form-->
 <div class="create-form">
-    <form method="post" action="connect.php">
+    <!--study group form Action-->
+    <form action="http://localhost:5000/study_group" method="post">
         <p class="hint-text">Create Study Group</p>
         <div class="form-group" id='dropdown-menu'>
             <label for="university" id='selectionLabel'>School </label>

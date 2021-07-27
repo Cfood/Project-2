@@ -25,27 +25,33 @@ def login():
         user = request.args.get('first_name')
         return redirect(url_for('success', name=user))
 
-#################  create study group ##############
+
+# Route for study_group
 @app.route('/study_group', methods=['POST', 'GET'])
-def create_():
+def study_group():
     if request.method == 'POST':
-        first_name = request.form['first_name']
-        last_name = request.form['last_name']
-        email = request.form['email']
-        password = request.form['password']
+        school = request.form['school']
+        state = request.form['state']
+        subject = request.form['subject']
+        course_level = request.form['level']
+        time = request.form['when']
+        location = request.form['where']
+        group_type = request.form['groupType']
+
+
         # call the method to store the data in database(sqlite)
-        store_login(first_name, last_name, email, password)
+        store_study_group(school, state, subject, course_level,time,location,group_type)
         
-        return redirect(url_for('success', name=first_name))
+        return redirect(url_for('success', name=school))
     else:
-        user = request.args.get('first_name')
+        user = request.args.get('school')
         return redirect(url_for('success', name=user))
 
-###########
+#####################################################################
 
-
+# function for database connection 
 def store_login(first_name, last_name, email,password):
-    print(first_name)
+    #print(first_name)
     connection = sqlite3.connect("C:/Users/vijay/Documents/Saradha_R/Project-2/Project/app.db")
     connection.row_factory = sqlite3.Row
     cursor = connection.cursor()
@@ -61,6 +67,23 @@ def store_login(first_name, last_name, email,password):
     return ""
 
     # return templates.TemplateResponse("index.html", {"request": request, "stocks": rows})
+
+def store_study_group(school, state, subject, course_level,time,location,group_type):
+    print("hello")
+    connection = sqlite3.connect("C:/Users/vijay/Documents/Saradha_R/Project-2/Project/app.db")
+    connection.row_factory = sqlite3.Row
+    cursor = connection.cursor()
+
+    cursor.execute("""
+    insert into study_group
+    values (?,?,?,?,?,?,?)
+
+    """, (school, state, subject, course_level,time,location,group_type))
+  
+
+    connection.commit()
+    return ""
+
 
 ##########
 
