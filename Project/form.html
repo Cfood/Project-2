@@ -40,12 +40,37 @@
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/js/select2.min.js"></script>
-    <script type="text/javascript">  
-        $(document).ready(function() {
-            var universityArray = ['a','a','d'];
+    <script type="text/javascript">
+        $.get('data/majors.csv', function(data) {
+        var major = ''
+        var majorArray = []
+        for (i=0; i<data.length;i++) {
+            if (data[i] === '\n' ) {
+                majorArray.push(major)
+                var major = ''
+            } else {
+                var major = major.concat(`${data[i]}`)
+            }
+            
+        }
+        var majorArray = majorArray.splice(1)
+        $('#subject').select2({
+            data: majorArray
+        });
+    });
+    </script>
+    <script type="text/javascript">
+        $.get('data/university_lat_lng.json').then((data) =>{
+            var schoolNameArray = []
+            for (i = 0;i<10343;i++) {
+                var school_name = data[i].location_name
+                var school_address = data[i].location_name
+                var school_location = [data[i].lat, data[i].lng]
+                schoolNameArray.push(school_name)
+            }
             $("#university").select2({
-            data: universityArray
-            });
+            data: schoolNameArray
+            });     
         });
     </script>
     <script type="text/javascript">  
