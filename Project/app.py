@@ -1,13 +1,14 @@
-from flask import Flask, redirect, url_for, request
+from flask import Flask, redirect, render_template,url_for, request
 import sqlite3
 
 # Create an instance of Flask
 app = Flask(__name__)
 
 # Route to render name
-@app.route('/success')
-def success():
-    return 'Hello'
+@app.route('/success/<name>')
+def success(name):
+    # return 'Hello'
+    return render_template("landing.html", name=name)
 
 # route to store login information
 @app.route('/login', methods=['POST', 'GET'])
@@ -43,7 +44,7 @@ def study_group():
         # call the method to store the data in database(sqlite)
         store_study_group(school, state, subject, course_level,time,location,group_type)
         
-        return redirect(url_for('success'))
+        return redirect(url_for('success', name=subject))
     else:
         user = request.args.get('school')
         return redirect(url_for('success', name=user))
