@@ -26,4 +26,4 @@ def make_json(csvFilePath, jsonFilePath):
         jsonf.write(json.dumps(data, indent=4))
  
 # Call the make_json function
-make_json('university_lat_lng_Output.csv', 'university_lat_lng.json')
+make_json('university_lat_lng_Output.csv', 'form_inputs.json')

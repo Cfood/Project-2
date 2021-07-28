@@ -13,3 +13,32 @@ L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     id: "mapbox/streets-v11",
     accessToken: API_KEY
 }).addTo(map);
+
+
+d3.csv("static/js/form_inputs.csv").then(function(data) {
+    console.log(data)
+    var groupType
+
+    var formMarkers = L.featureGroup();
+
+    // Loop through the form inputs 
+    for (var index = 0; index < data.length; index++) {
+
+        var groupType = data[index].group_type
+        var level = data[index].course_level
+        var subject = data[index].subject
+        var time = data[index].time
+        var skool = data[index].school
+       var loca = (data[index].location).split(',')
+
+
+       var lat = parseFloat(loca[0].substr(1))
+       var lng = parseFloat(loca[1].substr(1))
+       
+
+        var marker = L.marker([lat,lng]).addTo(formMarkers)
+        var tooltip = marker.bindTooltip(level+' level ' +subject+ ' study ' +groupType + ' on ' +time + " " + skool);
+    }
+    
+    map.addLayer(formMarkers)
+})
