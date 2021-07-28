@@ -1,6 +1,4 @@
-function createMap(universities) {
-
-    var map = L.map("map", {
+var map = L.map("map", {
         center: [40.73, -100.0059],
         zoom: 5,
         // layers: [streetMap, universities]
@@ -15,62 +13,32 @@ function createMap(universities) {
         accessToken: API_KEY
     }).addTo(map);
 
-    // // Create a baseMaps object to hold the lightmap layer
-    // var baseMaps = {
-    //     "Street Map": streetMap
-    // };
 
-    // // Create an overlayMaps object to hold the universities layer
-    // var overlayMaps = {
-    //     "University Names": universities
-    // };
-
-    // Create the map object with options
-    // var map = L.map("map", {
-    //     center: [40.73, -100.0059],
-    //     zoom: 5,
-    //     layers: [streetMap, universities]
-    // });
-
-    //     // Create a layer control, pass in the baseMaps and overlayMaps. Add the layer control to the map
-    //     L.control.layers(baseMaps, overlayMaps, {
-    //         collapsed: false
-    //     }).addTo(map);
-    // }
-
-    function createMarkers(data) {
-
-        // Pull the "stations" property off of data.data
-
-
-        // Initialize an array to hold bike markers
-        var universityMarkers = [];
+    d3.csv("static/js/form_inputs.csv").then(function(data) {
+        
+        
+        var formMarkers = L.featureGroup();
 
         // Loop through the stations array
         for (var index = 0; index < data.length; index++) {
 
-
-            // console.log(data[index].location)
-
-            // var station = data[index];
+            // var formLocation = data[index].location
+            // console.log(formLocation)
 
             // For each station, create a marker and bind a popup with the station's name
-            var universityMarker = L.marker(data[index].location)
+            
                 // .bindPopup("<h3>" + station.name + "<h3><h3>Capacity: " + station.capacity + "</h3>");
-
+            console.log(universityMarker)
             // Add the marker to the universityMarkers array
-            universityMarkers.push(universityMarker);
+
+            
         }
-
-        // Create a layer group made from the bike markers array, pass it into the createMap function
-        createMap(L.layerGroup(universityMarkers));
-    }
-    d3.csv("../static/data/form_inputs.csv").then(createMarkers);
+        var universityMarker = L.marker([45,100]).addTo(formMarkers)
+        map.addLayer(formMarkers)
+    })
 
 
-};
 
-createMap("../static/data/form_inputs.csv");
 //Perform an API call to the Citi Bike API to get station information.Call createMarkers when complete
 
 
