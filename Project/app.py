@@ -1,3 +1,4 @@
+
 from flask import Flask, redirect, render_template,url_for, request
 import sqlite3
 
@@ -61,7 +62,6 @@ def store_login(first_name, last_name, email,password):
     cursor.execute("""
     insert into login
     values (?,?,?,?)
-
     """, (first_name,last_name,email,password))
   
 
@@ -80,7 +80,6 @@ def store_study_group(school, state, subject, course_level,time,location,group_t
     cursor.execute("""
     insert into study_group
     values (?,?,?,?,?,?,?)
-
     """, (school, state, subject, course_level,time,location,group_type))
   
 
